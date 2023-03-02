@@ -1,0 +1,105 @@
+{
+  "Files": [
+    {
+      "Id": "/Users/miku/Documents/CSProject/W7_ZooManager_HW/ZooManager/bin/Debug/net7.0/wwwroot/_framework/blazor.webassembly.js",
+      "PackagePath": "staticwebassets/_framework/blazor.webassembly.js"
+    },
+    {
+      "Id": "/Users/miku/Documents/CSProject/W7_ZooManager_HW/ZooManager/obj/Debug/net7.0/build-gz/dQa6KhLT.gz",
+      "PackagePath": "staticwebassets/_framework/blazor.webassembly.js.gz"
+    },
+    {
+      "Id": "/Users/miku/Documents/CSProject/W7_ZooManager_HW/ZooManager/obj/Debug/net7.0/scopedcss/bundle/ZooManager.styles.css",
+      "PackagePath": "staticwebassets/ZooManager.styles.css"
+    },
+    {
+      "Id": "/Users/miku/Documents/CSProject/W7_ZooManager_HW/ZooManager/wwwroot/.DS_Store",
+      "PackagePath": "staticwebassets/.DS_Store"
+    },
+    {
+      "Id": "/Users/miku/Documents/CSProject/W7_ZooManager_HW/ZooManager/wwwroot/css/.DS_Store",
+      "PackagePath": "staticwebassets/css/.DS_Store"
+    },
+    {
+      "Id": "/Users/miku/Documents/CSProject/W7_ZooManager_HW/ZooManager/wwwroot/css/app.css",
+      "PackagePath": "staticwebassets/css/app.css"
+    },
+    {
+      "Id": "/Users/miku/Documents/CSProject/W7_ZooManager_HW/ZooManager/wwwroot/css/bootstrap/bootstrap.min.css",
+      "PackagePath": "staticwebassets/css/bootstrap/bootstrap.min.css"
+    },
+    {
+      "Id": "/Users/miku/Documents/CSProject/W7_ZooManager_HW/ZooManager/wwwroot/css/bootstrap/bootstrap.min.css.map",
+      "PackagePath": "staticwebassets/css/bootstrap/bootstrap.min.css.map"
+    },
+    {
+      "Id": "/Users/miku/Documents/CSProject/W7_ZooManager_HW/ZooManager/wwwroot/css/open-iconic/.DS_Store",
+      "PackagePath": "staticwebassets/css/open-iconic/.DS_Store"
+    },
+    {
+      "Id": "/Users/miku/Documents/CSProject/W7_ZooManager_HW/ZooManager/wwwroot/css/open-iconic/FONT-LICENSE",
+      "PackagePath": "staticwebassets/css/open-iconic"
+    },
+    {
+      "Id": "/Users/miku/Documents/CSProject/W7_ZooManager_HW/ZooManager/wwwroot/css/open-iconic/ICON-LICENSE",
+      "PackagePath": "staticwebassets/css/open-iconic"
+    },
+    {
+      "Id": "/Users/miku/Documents/CSProject/W7_ZooManager_HW/ZooManager/wwwroot/css/open-iconic/README.md",
+      "PackagePath": "staticwebassets/css/open-iconic/README.md"
+    },
+    {
+      "Id": "/Users/miku/Documents/CSProject/W7_ZooManager_HW/ZooManager/wwwroot/css/open-iconic/font/.DS_Store",
+      "PackagePath": "staticwebassets/css/open-iconic/font/.DS_Store"
+    },
+    {
+      "Id": "/Users/miku/Documents/CSProject/W7_ZooManager_HW/ZooManager/wwwroot/css/open-iconic/font/css/open-iconic-bootstrap.min.css",
+      "PackagePath": "staticwebassets/css/open-iconic/font/css/open-iconic-bootstrap.min.css"
+    },
+    {
+      "Id": "/Users/miku/Documents/CSProject/W7_ZooManager_HW/ZooManager/wwwroot/css/open-iconic/font/fonts/open-iconic.eot",
+      "PackagePath": "staticwebassets/css/open-iconic/font/fonts/open-iconic.eot"
+    },
+    {
+      "Id": "/Users/miku/Documents/CSProject/W7_ZooManager_HW/ZooManager/wwwroot/css/open-iconic/font/fonts/open-iconic.otf",
+      "PackagePath": "staticwebassets/css/open-iconic/font/fonts/open-iconic.otf"
+    },
+    {
+      "Id": "/Users/miku/Documents/CSProject/W7_ZooManager_HW/ZooManager/wwwroot/css/open-iconic/font/fonts/open-iconic.svg",
+      "PackagePath": "staticwebassets/css/open-iconic/font/fonts/open-iconic.svg"
+    },
+    {
+      "Id": "/Users/miku/Documents/CSProject/W7_ZooManager_HW/ZooManager/wwwroot/css/open-iconic/font/fonts/open-iconic.ttf",
+      "PackagePath": "staticwebassets/css/open-iconic/font/fonts/open-iconic.ttf"
+    },
+    {
+      "Id": "/Users/miku/Documents/CSProject/W7_ZooManager_HW/ZooManager/wwwroot/css/open-iconic/font/fonts/open-iconic.woff",
+      "PackagePath": "staticwebassets/css/open-iconic/font/fonts/open-iconic.woff"
+    },
+    {
+      "Id": "/Users/miku/Documents/CSProject/W7_ZooManager_HW/ZooManager/wwwroot/favicon.ico",
+      "PackagePath": "staticwebassets/favicon.ico"
+    },
+    {
+      "Id": "/Users/miku/Documents/CSProject/W7_ZooManager_HW/ZooManager/wwwroot/index.html",
+      "PackagePath": "staticwebassets/index.html"
+    },
+    {
+      "Id": "obj/Debug/net7.0/staticwebassets/msbuild.ZooManager.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj/Debug/net7.0/staticwebassets/msbuild.build.ZooManager.props",
+      "PackagePath": "build\\ZooManager.props"
+    },
+    {
+      "Id": "obj/Debug/net7.0/staticwebassets/msbuild.buildMultiTargeting.ZooManager.props",
+      "PackagePath": "buildMultiTargeting\\ZooManager.props"
+    },
+    {
+      "Id": "obj/Debug/net7.0/staticwebassets/msbuild.buildTransitive.ZooManager.props",
+      "PackagePath": "buildTransitive\\ZooManager.props"
+    }
+  ],
+  "ElementsToRemove": []
+}
