@@ -17,6 +17,7 @@
             align-items: center;
             font-size: 30px;
         }
+
     sub {
         display: inline-block;
         color: green;
@@ -100,6 +101,12 @@
                 <h2>🐥</h2>
             </button>
         </div>
+        <div class="col-1">
+            <button @onclick="@(() => Game.AddAnimalToHolding("alien"))"
+                    type="button" class="sm btn btn-outline-dark">
+                <h2>🦠</h2>
+            </button>
+        </div>
     </div>
     <div class="row">
         <div class="col">
@@ -111,49 +118,60 @@
             <h1 style="text-align:end">Holding Pen:</h1>
         </div><div class="col-6">
             <button disabled type="button" class="btn btn-outline-dark">
-                <h2>@Game.holdingPen.emoji
+                <h2>
+                    @Game.holdingPen.emoji
                 <sup>@Game.holdingPen.rtLabel</sup>
-                <sub>@Game.holdingPen.turnLabel</sub></h2>
-            </button>
-        </div>
+                <sub>@Game.holdingPen.turnLabel</sub>
+            </h2>
+        </button>
     </div>
-    <div class="row">
-        <div class="col">
-            <hr />
-        </div>
+</div>
+<div class="row">
+    <div class="col">
+        <hr />
     </div>
-    <div class="row">
-        <div class="col">
-            <table align="center">
-                @for (var y = 0; y < Game.map.Height; y++)
-                {
-                    <tr>
-                        @for (var x = 0; x < Game.map.Width; x++)
-                            {
-                                var _x = x;
-                                var _y = y;
-                            <td>
-                                <button @onclick="@(() => Game.ZoneClick(Game.map.AnimalZones[_y][_x]))"
-                                        type="button" class="btn btn-outline-dark">
-                                    <h2>
-                                        @(Game.map.AnimalZones[_y][_x].emoji)
-                                        <sup>@(Game.map.AnimalZones[_y][_x].rtLabel)</sup>
-                                        <sub>@(Game.map.AnimalZones[_y][_x].turnLabel)</sub>
-                                    </h2>
-                                </button>
-                            </td>
-                        }
-                    </tr>
-                }
-            </table>
-        </div>
+</div>
+<div class="row">
+    <div class="col">
+        <table align="center">
+            @for (var y = 0; y < Game.map.Height; y++)
+            {
+                <tr>
+                    @for (var x = 0; x < Game.map.Width; x++)
+                    {
+                        var _x = x;
+                        var _y = y;
+                        <td>
+                            <button @onclick="@(() => Game.ZoneClick(Game.map.AnimalZones[_y][_x]))"
+                                    type="button" class="btn btn-outline-dark">
+                                <h2>
+                                    @(Game.map.AnimalZones[_y][_x].emoji)
+                                    <sup>@(Game.map.AnimalZones[_y][_x].rtLabel)</sup>
+                                    <sub>@(Game.map.AnimalZones[_y][_x].turnLabel)</sub>
+                                </h2>
+                            </button>
+                        </td>
+                    }
+                </tr>
+            }
+        </table>
     </div>
+</div>
 </div>
 
 @code {
     protected override void OnInitialized()
     {
         Game.SetUpGame();
+        Game.Update += OnUpdate;
+    }
+
+    public async Task OnUpdate()
+    {
+        await InvokeAsync(() =>
+        {
+            StateHasChanged();
+        });
     }
 }
 

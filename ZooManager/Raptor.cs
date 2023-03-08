@@ -1,15 +1,17 @@
 ﻿using System;
 namespace ZooManager
 {
-    public class Raptor : Bird, IPredator
+    public class Raptor : Bird, IPredator, IPrey
     {
         public int Preys { get; set; }
+        public int Predators { get; set; }
         public int Hungry { get; set; }
         public Raptor(Zone zone, string name = "Screechy") : base(zone)
         {
             emoji = "🦅";
             this.species = LayerMask.Raptor;
             this.Preys = (int)(LayerMask.Cat | LayerMask.Mouse);
+            this.Predators = (int)(LayerMask.Alien);
             this.name = name;
             this.reactionTime = new Random().Next(1, 1); // reaction time 1(very fast)
 
@@ -18,6 +20,8 @@ namespace ZooManager
 
         public override void Activate()
         {
+            if (!activate) return;
+
             base.Activate();
             Hungry--;
             if (Death())
@@ -36,7 +40,7 @@ namespace ZooManager
             {
                 if (Seek(zone, (Direction)d, 1, (int)Preys) > 0)
                 {
-                    if (Attack(1, 0, Preys) > 0) return true;
+                    if (Attack(1, Predators, Preys) > 0) return true;
                 }
             }
             return false;
@@ -48,7 +52,7 @@ namespace ZooManager
         public bool Flee()
         {
 
-            if (Move(2, 0, Preys, true) > 0) return true;
+            if (Move(2, Predators, Preys, true) > 0) return true;
 
             return false;
 
@@ -56,7 +60,7 @@ namespace ZooManager
         /// <summary>
         /// Call this method to replace the animal with a skeleton
         /// </summary>
-        public bool Death()
+        protected bool Death()
         {
             if (Hungry <= 0)
             {

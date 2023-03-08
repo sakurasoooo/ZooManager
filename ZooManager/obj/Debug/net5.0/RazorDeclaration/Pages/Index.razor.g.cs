@@ -91,11 +91,20 @@ using ZooManager;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 153 "/Users/miku/Documents/CSProject/W7_ZooManager_HW/ZooManager/Pages/Index.razor"
+#line 162 "/Users/miku/Documents/CSProject/W7_ZooManager_HW/ZooManager/Pages/Index.razor"
        
     protected override void OnInitialized()
     {
         Game.SetUpGame();
+        Game.Update += OnUpdate;
+    }
+
+    public async Task OnUpdate()
+    {
+        await InvokeAsync(() =>
+        {
+            StateHasChanged();
+        });
     }
 
 #line default

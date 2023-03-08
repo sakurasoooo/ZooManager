@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 
 namespace ZooManager
 {
@@ -11,8 +12,8 @@ namespace ZooManager
         {
             this.emoji = "🐱";
             this.species = LayerMask.Cat;
-            this.Preys = (int)(LayerMask.Mouse|LayerMask.Chick);
-            this.Predators = (int)LayerMask.Raptor;
+            this.Preys = (int)(LayerMask.Mouse | LayerMask.Chick);
+            this.Predators = (int)(LayerMask.Raptor | LayerMask.Alien);
             this.name = name;
             this.reactionTime = new Random().Next(1, 6); // reaction time 1 (fast) to 5 (medium)
 
@@ -22,6 +23,8 @@ namespace ZooManager
 
         public override void Activate()
         {
+            if (!activate) return;
+
             base.Activate();
             Hungry--;
             if (Death())

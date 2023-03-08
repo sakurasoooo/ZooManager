@@ -1,20 +1,24 @@
 ﻿using System;
+using System.Diagnostics;
+
 namespace ZooManager
 {
-	public class Chick:Bird, IPrey
+    public class Chick : Bird, IPrey
     {
         public int Predators { get; set; }
-        public Chick(Zone zone, string name = "Coco") :base(zone)
-		{
-			emoji = "🐥";
+        public Chick(Zone zone, string name = "Coco") : base(zone)
+        {
+            emoji = "🐥";
             this.species = LayerMask.Chick;
-            Predators = (int)LayerMask.Cat;
+            Predators = (int)(LayerMask.Cat | LayerMask.Alien);
             this.name = name;
             this.reactionTime = new Random().Next(6, 10); // reaction time 6 (medium) to 10 (slow)
         }
 
         public override void Activate()
         {
+            if (!activate) return;
+
             base.Activate();
             Mature();
             Console.WriteLine("I am a Chick. Cheep.");
