@@ -3,12 +3,19 @@ namespace ZooManager
 {
     public class Mouse : Animal, IPrey
     {
-        public int Predators { get; set; }
+        public int Predators { get; set; } // Layermask, used to record the layer where the enemies is located
+
+
+        /// <summary>
+        /// The mouse's constructor, the constructor defaults to the mouse's enemy as Cat and Raptor
+        /// </summary>
+        /// <param name="zone"></param>
+        /// <param name="name"></param>
         public Mouse(Zone zone, string name = "Squeaky") : base(zone)
         {
             emoji = "🐭";
             species = LayerMask.Mouse;
-            Predators = (int)LayerMask.Cat;
+            Predators = (int)(LayerMask.Cat | LayerMask.Raptor);
             this.name = name; // "this" to clarify instance vs. method parameter
             reactionTime = new Random().Next(1, 4); // reaction time of 1 (fast) to 3
             /* Note that Mouse reactionTime range is smaller than Cat reactionTime,
@@ -16,7 +23,9 @@ namespace ZooManager
              */
 
         }
-
+        /// <summary>
+        /// It will try to run away from the predator.
+        /// </summary>
         public override void Activate()
         {
             base.Activate();

@@ -1,7 +1,8 @@
 ﻿using System;
 namespace ZooManager
 {
-	public enum LayerMask
+    // The bit mask is used to record the layer where the GameObject is located for comparison.
+    public enum LayerMask
 	{
 		Ground = 1 << 0,
 		Cat = 1 << 1,

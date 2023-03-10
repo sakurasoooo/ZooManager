@@ -4,9 +4,15 @@ namespace ZooManager
 {
     public class Cat : Animal, IPredator, IPrey
     {
-        public int Preys { get; set; }
-        public int Predators { get; set; }
-        public int Hungry { get; set; }
+        public int Preys { get; set; } // Layermask, used to record the layer where the food is located
+        public int Predators { get; set; } // Layermask, used to record the layer where the enemies is located
+        public int Hungry { get; set; } // A value of 0 means the animal is very hungry.
+
+        /// <summary>
+        /// The cat's constructor, the constructor defaults to the cat's natural enemy as Raptor, and the food is mouse and chick
+        /// </summary>
+        /// <param name="zone"></param>
+        /// <param name="name"></param>
         public Cat(Zone zone, string name = "Fluffy") : base(zone)
         {
             this.emoji = "🐱";
@@ -20,6 +26,11 @@ namespace ZooManager
 
         }
 
+        /// <summary>
+        /// Used to be called by Game.
+        ///When the hunger value is 0, the cat will die.
+        /// If a cat attempts to attack its prey and fails, it will try to run away from the predator.
+        /// </summary>
         public override void Activate()
         {
             base.Activate();
@@ -34,14 +45,11 @@ namespace ZooManager
 
         }
 
-        /* Note that our cat is currently not very clever about its hunting.
-         * It will always try to attack "up" and will only seek "down" if there
-         * is no mouse above it. This does not affect the cat's effectiveness
-         * very much, since the overall logic here is "look around for a mouse and
-         * attack the first one you see." This logic might be less sound once the
-         * cat also has a predator to avoid, since the cat may not want to run in
-         * to a square that sets it up to be attacked!
-         */
+        /// <summary>
+        /// Used to be called by Activate.
+        /// If there are prey in the four adjacent zones, it will try to attack the most favorable position.
+        /// </summary>
+        /// <returns></returns>
         public bool Hunt()
         {
             for (int d = 0; d < 4; d++)
@@ -53,7 +61,11 @@ namespace ZooManager
             }
             return false;
         }
-
+        /// <summary>
+        /// Used to be called by Activate.
+        /// If there are natural enemies in the four adjacent zones, it will try to move to the most favorable position within two distances.
+        /// </summary>
+        /// <returns></returns>
         public bool Flee()
         {
             for (int d = 0; d < 4; d++)
@@ -66,6 +78,7 @@ namespace ZooManager
             return false;
         }
         /// <summary>
+        /// Used to be called by Activate.
         /// Call this method to replace the animal with a skeleton
         /// </summary>
         public bool Death()

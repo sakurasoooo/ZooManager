@@ -98,7 +98,7 @@ namespace ZooManager
             Random rng = new Random();
             for (var r = 1; r < 11; r++) // reaction times from 1 to 10
             {
-                map1D.OrderBy(a => rng.Next()).ToList();
+                map1D.OrderBy(a => rng.Next()).ToList(); // shuffle the order to prevent the topleft animal always attack first
                 foreach (var zone in map1D)
                 {
                     if (zone.occupant != null && zone.occupant.reactionTime == r)

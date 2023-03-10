@@ -8,11 +8,17 @@ namespace ZooManager
     public abstract class Animal : GameObject
     {
 
+        /// <summary>
+        /// Constrctur of the Animal. Zone is needed to instantiate the Animal Class
+        /// </summary>
+        /// <param name="zone"></param>
         protected Animal(Zone zone) : base(zone)
         {
 
         }
-
+        /// <summary>
+        /// Used to be called by Game class, base.Activate() is called to tell GameObject increate the turn counter
+        /// </summary>
         override public void Activate()
         {
             base.Activate();
@@ -34,17 +40,20 @@ namespace ZooManager
         {
             if (distance <= 0) return 0; // if distance less than 0, terminate the search
 
-            Zone? nextZone = zone.FindZone(d);
+            Zone? nextZone = zone.FindZone(d); // check if the zone is valid
 
             if (nextZone is null) return 0; // if reach the boundary, terminate the search
             else if (nextZone.occupant == null) // Search for open spaces free of other gameobjects
             {
+                // if target includes Ground player, then check empty space
                 if ((target & (int)LayerMask.Ground) != 0)
                 {
                     return 1;
                 }
-                //continue seeking
+                // continue seeking if current space is not empty
                 int returnValue = Seek(nextZone, d, distance - 1, target);
+                // if find targets then return value and add self
+                // if do not find then return 0
                 if (returnValue > 0) return 1 + returnValue;
             }
             else
@@ -53,6 +62,7 @@ namespace ZooManager
                 {
                     return 1;
                 }
+                // if ignoreObstacle is true, the check will not stop when encontering an animal.
                 if (ignoreObstacle)
                 {
                     //continue seeking
@@ -74,8 +84,8 @@ namespace ZooManager
         virtual protected int Move(int distance = 1, int predators = 0 << 0, int preys = 0 << 0, bool fly = false)
         {
             int movedDistance = 0;
-            Queue<Zone> startZones = new Queue<Zone>();
-            HashSet<Zone> visitedZones = new HashSet<Zone>();
+            Queue<Zone> startZones = new Queue<Zone>(); // used for BFS
+            HashSet<Zone> visitedZones = new HashSet<Zone>(); // store the unique zones
 
 
             startZones.Enqueue(this.zone);// start point
@@ -104,7 +114,9 @@ namespace ZooManager
 
                         if (Seek(currentZone, (Direction)d, range, (int)LayerMask.Ground, fly) >= 1) // if found a empty ground
                         {
-                            Zone nextZone = currentZone.FindZone((Direction)d);
+                            Zone nextZone = currentZone.FindZone((Direction)d); // check if the zone in the direction is valid
+
+                            // if the zone has not visited then add it to the wait list
                             if (!(visitedZones.Contains(nextZone)))
                             {
                                 targetZones.Enqueue(nextZone);
@@ -164,7 +176,7 @@ namespace ZooManager
         {
 
             List<Zone> preyZones = new List<Zone>();
-            //search all preys in the range
+            //search all preys in the range, the distance is only expected 0 or 1, because it is not complete and enough for HW
             for (int i = 0; i < distance; i++)
             {
                 for (int d = 0; d < 4; d++)

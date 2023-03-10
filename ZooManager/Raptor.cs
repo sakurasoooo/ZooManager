@@ -3,8 +3,14 @@ namespace ZooManager
 {
     public class Raptor : Bird, IPredator
     {
-        public int Preys { get; set; }
-        public int Hungry { get; set; }
+        public int Preys { get; set; }  // Layermask, used to record the layer where the food is located
+        public int Hungry { get; set; } // A value of 0 means the animal is very hungry.
+
+        /// <summary>
+        /// The raptor's constructor, the constructor defaults to the food is mouse and Cat
+        /// </summary>
+        /// <param name="zone"></param>
+        /// <param name="name"></param>
         public Raptor(Zone zone, string name = "Screechy") : base(zone)
         {
             emoji = "🦅";
@@ -16,6 +22,11 @@ namespace ZooManager
             this.Hungry = 4;
         }
 
+        /// <summary>
+        /// Used to be called by Game.
+        /// When the hunger value is 0, the Raptor will die.
+        /// If a Raptor attempts to attack its prey and fails, it will try to patrol
+        /// </summary>
         public override void Activate()
         {
             base.Activate();
@@ -30,6 +41,11 @@ namespace ZooManager
 
         }
 
+        /// <summary>
+        /// Used to be called by Activate.
+        /// If there are prey in the four adjacent zones, it will try to attack the most favorable position.
+        /// </summary>
+        /// <returns></returns>
         public bool Hunt()
         {
             for (int d = 0; d < 4; d++)
@@ -42,7 +58,7 @@ namespace ZooManager
             return false;
         }
         /// <summary>
-        /// The raptor's own movement method will move to a maximum of distance 2
+        /// The raptor's own movement method will move to a maximum of distance 2, and ignore any obstacles blocking the way
         /// </summary>
         /// <returns></returns>
         public bool Flee()
@@ -54,6 +70,7 @@ namespace ZooManager
 
         }
         /// <summary>
+        /// Used to be called by Activate.
         /// Call this method to replace the animal with a skeleton
         /// </summary>
         public bool Death()
