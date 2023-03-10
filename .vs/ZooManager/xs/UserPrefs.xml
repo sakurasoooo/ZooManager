@@ -2,32 +2,47 @@
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="ZooManager/Pages/Index.razor">
     <Files>
-      <File FileName="ZooManager/Pages/Index.razor" Line="1" Column="1" />
-      <File FileName="ZooManager/Zone.cs" Line="37" Column="1" />
-      <File FileName="ZooManager/Cat.cs" Line="21" Column="1" />
-      <File FileName="ZooManager/Mouse.cs" Line="14" Column="14" />
-      <File FileName="ZooManager/Animal.cs" Line="2" Column="1" />
-      <File FileName="ZooManager/Game.cs" Line="4" Column="19" />
-      <File FileName="ZooManager/Point.cs" />
-      <File FileName="ZooManager/Program.cs" />
-      <File FileName="ZooManager/Properties/launchSettings.json" Line="23" Column="26" />
+      <File FileName="ZooManager/Cat.cs" Line="99" Column="1" />
+      <File FileName="ZooManager/Raptor.cs" Line="96" Column="1" />
+      <File FileName="ZooManager/Skull.cs" Line="19" Column="45" />
+      <File FileName="ZooManager/Zone.cs" Line="1" Column="1" />
+      <File FileName="ZooManager/Animal.cs" Line="115" Column="1" />
+      <File FileName="ZooManager/Bird.cs" Line="17" Column="1" />
+      <File FileName="ZooManager/Chick.cs" Line="71" Column="1" />
+      <File FileName="ZooManager/Game.cs" Line="139" Column="2" />
+      <File FileName="ZooManager/GameObject.cs" Line="152" Column="1" />
+      <File FileName="ZooManager/IPredator.cs" Line="18" Column="1" />
+      <File FileName="ZooManager/IPrey.cs" Line="14" Column="1" />
+      <File FileName="ZooManager/LayerMask.cs" Line="18" Column="1" />
+      <File FileName="ZooManager/Mouse.cs" Line="87" Column="1" />
+      <File FileName="ZooManager/wwwroot/css/bootstrap/bootstrap.min.css" Line="8" Column="1" />
+      <File FileName="ZooManager/wwwroot/css/bootstrap/bootstrap.min.css.map" Line="1" Column="1" />
+      <File FileName="ZooManager/Alien.cs" Line="86" Column="1" />
+      <File FileName="ZooManager/Map.cs" Line="170" Column="1" />
+      <File FileName="ZooManager/Pages/Index.razor" Line="176" Column="24" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="ZooManager" expanded="True">
             <Node name="ZooManager" expanded="True">
-              <Node name="Pages" expanded="True" />
-              <Node name="Properties" expanded="True">
-                <Node name="launchSettings.json" selected="True" />
+              <Node name="Pages" expanded="True">
+                <Node name="Index.razor" selected="True" />
               </Node>
+              <Node name="Properties" expanded="True" />
               <Node name="Shared" expanded="True">
                 <Node name="MainLayout.razor" expanded="True" />
+              </Node>
+              <Node name="wwwroot" expanded="True">
+                <Node name="css" expanded="True">
+                  <Node name="bootstrap" expanded="True">
+                    <Node name="bootstrap.min.css" expanded="True" />
+                  </Node>
+                </Node>
               </Node>
             </Node>
           </Node>
@@ -35,5 +50,6 @@
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.ItemProperties.ZooManager PreferredExecutionTarget="/Applications/Google Chrome.app" />
 </Properties>

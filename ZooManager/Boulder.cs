@@ -3,17 +3,18 @@ using System.Diagnostics;
 
 namespace ZooManager
 {
-    public class Skull : Landscape
-    {
+	public class Boulder:Landscape
+	{
+		
         /// <summary>
-        /// Skull's constructor
+        /// Boulder's constructor
         /// </summary>
         /// <param name="zone"></param>
         /// <param name="name"></param>
-        public Skull(Zone zone, string name = "Captain") : base(zone)
+        public Boulder(Zone zone, string name = "Stone") : base(zone)
         {
-            this.emoji = "☠";
-            this.species = LayerMask.Skull;
+            this.emoji = "🪨";
+            this.species = LayerMask.Boulder;
 
             this.name = name;
             this.reactionTime = new Random().Next(0, 0); // reaction time 1 (fast) to 5 (medium)
@@ -27,9 +28,8 @@ namespace ZooManager
             if (!activate) return;
 
             base.Activate();
-            Console.WriteLine("I am a Skull. Click，Click.");
+            Console.WriteLine("I am a Boulder. Bang! Bang!");
         }
-
     }
 }
 

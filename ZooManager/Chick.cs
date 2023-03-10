@@ -1,11 +1,15 @@
 ﻿using System;
-using System.Diagnostics;
-
 namespace ZooManager
 {
     public class Chick : Bird, IPrey
     {
-        public int Predators { get; set; }
+        public int Predators { get; set; }  // Layermask, used to record the layer where the enemies is located
+
+        /// <summary>
+        /// The Chick's constructor, the constructor defaults to the chick's natural enemy as Cat
+        /// </summary>
+        /// <param name="zone"></param>
+        /// <param name="name"></param>
         public Chick(Zone zone, string name = "Coco") : base(zone)
         {
             emoji = "🐥";
@@ -15,6 +19,11 @@ namespace ZooManager
             this.reactionTime = new Random().Next(6, 10); // reaction time 6 (medium) to 10 (slow)
         }
 
+        /// <summary>
+        /// Used to be called by Game.
+        /// When the chick lives 3 turns, it will mature to Raptor
+        /// Then it will try to run away from the predator.
+        /// </summary>
         public override void Activate()
         {
             if (!activate) return;
@@ -26,6 +35,11 @@ namespace ZooManager
 
         }
 
+        /// <summary>
+        /// Used to be called by Activate.
+        /// If there are natural enemies in the four adjacent zones, it will try to move to the most favorable position within two distances.
+        /// </summary>
+        /// <returns></returns>
         public bool Flee()
         {
             for (int d = 0; d < 4; d++)
@@ -39,7 +53,8 @@ namespace ZooManager
         }
 
         /// <summary>
-        /// After three turns, replace yourself with raptor
+        /// Used to be called by Activate.
+        /// After three turns, replace self  with raptor
         /// </summary>
         private void Mature()
         {

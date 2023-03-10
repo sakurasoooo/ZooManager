@@ -7,11 +7,18 @@ namespace ZooManager
     public abstract class Animal : GameObject
     {
 
+        /// <summary>
+        /// Constrctur of the Animal. Zone is needed to instantiate the Animal Class
+        /// </summary>
+        /// <param name="zone"></param>
         protected Animal(Zone zone) : base(zone)
         {
 
         }
 
+        /// <summary>
+        /// Used to be called by Game class, base.Activate() is called to tell GameObject increate the turn counter
+        /// </summary>
         override public void Activate()
         {
             base.Activate();
@@ -30,8 +37,8 @@ namespace ZooManager
         virtual protected int Move(int distance = 1, int predators = 0 << 0, int preys = 0 << 0, bool fly = false)
         {
             int movedDistance = 0;
-            Queue<Zone> startZones = new Queue<Zone>();
-            HashSet<Zone> visitedZones = new HashSet<Zone>();
+            Queue<Zone> startZones = new Queue<Zone>(); // used for BFS
+            HashSet<Zone> visitedZones = new HashSet<Zone>();  // store the unique zones
 
 
             startZones.Enqueue(this.zone);// start point
@@ -96,6 +103,8 @@ namespace ZooManager
                 }
                 return score;
             }).ToList();
+
+            if (desinations.Count == 0) return 0; // no valid results
 
             zone.MoveTo(desinations.Last()); // move the zone with the highest score
 

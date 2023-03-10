@@ -1,19 +1,22 @@
 ﻿using System;
-
 namespace ZooManager
 {
     using System.Collections.Generic;
     using System.Linq;
     abstract public class GameObject
     {
-        public LayerMask species { get; protected set; }
+        public LayerMask species { get; protected set; } // Record the layer where the game object is located for detection by other game objects.
         public string name { get; protected set; } = ""; // only allow subclass to modify
         public int reactionTime { get; protected set; }  // default reaction time for animals (1 - 10)
-        public int turnsActivated { get; protected set; }
+        public int turnsActivated { get; protected set; } // The number of rounds the game object survived.
         public string emoji { get; protected set; } = ""; // only allow subclass to modify
         public Zone zone { get; protected set; } // only allow subclass to modify
         public bool activate { get; protected set; } = true; // true if the game obejct has not been activated this turn
 
+        /// <summary>
+        /// Constructor for GameObject. A reference to a Zone is required. Let GameObject and Zone refer to each other.
+        /// </summary>
+        /// <param name="zone"></param>
         protected GameObject(Zone zone)
         {
             this.zone = zone;
@@ -24,12 +27,21 @@ namespace ZooManager
             Console.WriteLine($"I am at {zone.position.x},{zone.position.y}");
         }
 
+        // <summary>
+        /// Used to be called by Game
+        /// Each call increments turnsActivated by 1. It is only expected to be called once per Turn or Round.
+        /// Activate() should not be called if activate is false
+        /// </summary>
         virtual public void Activate()
         {
             activate = false;
             turnsActivated++;
         }
 
+        /// <summary>
+        /// Used to be called by Game
+        /// reset the activate state
+        /// </summary>
         virtual public void Deactivate()
         {
             activate = true;
@@ -50,17 +62,20 @@ namespace ZooManager
         {
             if (distance <= 0) return 0; // if distance less than 0, terminate the search
 
-            Zone? nextZone = zone.FindZone(d);
+            Zone? nextZone = zone.FindZone(d);  // check if the zone is valid
 
             if (nextZone is null) return 0; // if reach the boundary, terminate the search
             else if (nextZone.occupant == null) // Search for open spaces free of other gameobjects
             {
+                // if target includes Ground player, then check empty space
                 if ((target & (int)LayerMask.Ground) != 0)
                 {
                     return 1;
                 }
-                //continue seeking
+                // continue seeking if current space is not empty
                 int returnValue = Seek(nextZone, d, distance - 1, target);
+                // if find targets then return value and add self
+                // if do not find then return 0
                 if (returnValue > 0) return 1 + returnValue;
             }
             else
@@ -69,6 +84,7 @@ namespace ZooManager
                 {
                     return 1;
                 }
+                // if ignoreObstacle is true, the check will not stop when encontering an animal.
                 if (ignoreObstacle)
                 {
                     //continue seeking
@@ -93,7 +109,7 @@ namespace ZooManager
         {
 
             List<Zone> preyZones = new List<Zone>();
-            //search all preys in the range
+            //search all preys in the range, the distance is only expected 0 or 1, because it is not complete and enough for HW
             for (int i = 0; i < distance; i++)
             {
                 for (int d = 0; d < 4; d++)

@@ -1,12 +1,16 @@
 ﻿using System;
 namespace ZooManager
 {
-	public interface IPredator
-	{
+    /// <summary>
+    /// Predator contract. Every Predator should implement Preys' layermask and Hunt method and Death Method.
+    /// </summary>
+    public interface IPredator
+    {
         public int Preys { get; set; }
-        public int Hungry { get;  set; }
+        public int Hungry { get; set; }
 
         public bool Hunt();
+        public bool Death();
     }
 
 }

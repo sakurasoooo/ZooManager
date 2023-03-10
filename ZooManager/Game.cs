@@ -5,7 +5,6 @@ namespace ZooManager
     using System.Collections.ObjectModel;
     using System.Linq;
     using System.Threading.Tasks;
-
     public static class Game
     {
         static public event Func<Task>? Update;
@@ -88,6 +87,7 @@ namespace ZooManager
             if (animalType == "raptor") { var animal = new Raptor(holdingPen); }
             if (animalType == "chick") { var animal = new Chick(holdingPen); }
             if (animalType == "alien") { var animal = new Alien(holdingPen); }
+            if (animalType == "boulder") { var animal = new Boulder(holdingPen); }
             Console.WriteLine($"Holding pen occupant at {holdingPen.occupant.zone.position.x},{holdingPen.occupant.zone.position.y}");
             //ActivateAnimals();
         }
